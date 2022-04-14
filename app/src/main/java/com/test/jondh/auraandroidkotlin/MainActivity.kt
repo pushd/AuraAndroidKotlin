@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         val iv = findViewById<ImageView>(R.id.image_view)
         APIHelper.getInstance(this)
             .getImageInfo("0",
-                Response.Listener<PicsumInfo> { response ->
+                { response ->
                     Glide.with(this).load(response.getDownloadUrl()).into(iv)
                 },
-                Response.ErrorListener { error ->
+                { error ->
                     Log.w("MainActivity", "error getting image info for image id:0 => ", error);
                     Toast.makeText(this@MainActivity, "error getting image info", Toast.LENGTH_LONG).show()
                 })
