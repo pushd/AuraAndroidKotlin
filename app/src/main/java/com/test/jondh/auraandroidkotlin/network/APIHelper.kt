@@ -39,10 +39,11 @@ class APIHelper private constructor(context: Context) {
     }
 
     fun getList(
+        page: Int,
         listener: Response.Listener<List<PicsumInfo>>,
         errorListener: Response.ErrorListener
     ) {
-        val url = "https://picsum.photos/v2/list"
+        val url = "https://picsum.photos/v2/list?page=$page&limit=20"
         val gson = Gson()
         val simpleVolleyRequest: SimpleVolleyRequest<List<PicsumInfo>> = object :
             SimpleVolleyRequest<List<PicsumInfo>>(
